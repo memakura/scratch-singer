@@ -1,0 +1,1122 @@
+{
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "iAh/`=ARHj#;u{Doux5M-1/4": [
+                    "1/4",
+                    "1"
+                ],
+                "iAh/`=ARHj#;u{Doux5M-1/8": [
+                    "1/8",
+                    "0.5"
+                ],
+                "iAh/`=ARHj#;u{Doux5M-1/2": [
+                    "1/2",
+                    "2"
+                ],
+                "iAh/`=ARHj#;u{Doux5M-beats": [
+                    "beats",
+                    "4"
+                ],
+                "iAh/`=ARHj#;u{Doux5M-beat-type": [
+                    "beat-type",
+                    "4"
+                ],
+                "iAh/`=ARHj#;u{Doux5M-beginning-silent-duration": [
+                    "beginning-silent-duration",
+                    2.4
+                ],
+                "iAh/`=ARHj#;u{Doux5M-1/4+1/8": [
+                    "1/4+1/8",
+                    "1.5"
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "assetId": "797b03bdb8cf6ccfc30c0692d533d998",
+                    "name": "背景1",
+                    "bitmapResolution": 2,
+                    "md5ext": "797b03bdb8cf6ccfc30c0692d533d998.png",
+                    "dataFormat": "png",
+                    "rotationCenterX": 480,
+                    "rotationCenterY": 360
+                }
+            ],
+            "sounds": [
+                {
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "name": "ポップ",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 1032,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 100,
+            "videoTransparency": 50,
+            "videoState": "on"
+        },
+        {
+            "isStage": false,
+            "name": "song",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "QC(vK?~jF@HSML-x@LEw": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "kQC*[4b[A2O89Ialoap,",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "topLevel": true,
+                    "shadow": false,
+                    "x": 115,
+                    "y": 36
+                },
+                "kQC*[4b[A2O89Ialoap,": {
+                    "opcode": "music_setInstrument",
+                    "next": "L;t[Wq;tklWS_.piA-Zb",
+                    "parent": "QC(vK?~jF@HSML-x@LEw",
+                    "inputs": {
+                        "INSTRUMENT": [
+                            1,
+                            "rHiQnJC?O.wgvW+d._}6"
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "rHiQnJC?O.wgvW+d._}6": {
+                    "opcode": "music_menu_INSTRUMENT",
+                    "next": null,
+                    "parent": "kQC*[4b[A2O89Ialoap,",
+                    "inputs": {},
+                    "fields": {
+                        "INSTRUMENT": [
+                            15
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": true
+                },
+                "L;t[Wq;tklWS_.piA-Zb": {
+                    "opcode": "data_setvariableto",
+                    "next": "^v!6Q@7bo9Gc|KxIL(|;",
+                    "parent": "kQC*[4b[A2O89Ialoap,",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "0.5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "1/8",
+                            "iAh/`=ARHj#;u{Doux5M-1/8"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "^v!6Q@7bo9Gc|KxIL(|;": {
+                    "opcode": "data_setvariableto",
+                    "next": "^D_)[=u385@lyj|Cko5b",
+                    "parent": "L;t[Wq;tklWS_.piA-Zb",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "1"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "1/4",
+                            "iAh/`=ARHj#;u{Doux5M-1/4"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "^D_)[=u385@lyj|Cko5b": {
+                    "opcode": "data_setvariableto",
+                    "next": "7z!YB{KZh-8AoexOHI9V",
+                    "parent": "^v!6Q@7bo9Gc|KxIL(|;",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "2"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "1/2",
+                            "iAh/`=ARHj#;u{Doux5M-1/2"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "7z!YB{KZh-8AoexOHI9V": {
+                    "opcode": "data_setvariableto",
+                    "next": "J7%TU]~Fm{i;|Fj03ypv",
+                    "parent": "^D_)[=u385@lyj|Cko5b",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "1.5"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "1/4+1/8",
+                            "iAh/`=ARHj#;u{Doux5M-1/4+1/8"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "J7%TU]~Fm{i;|Fj03ypv": {
+                    "opcode": "music_setTempo",
+                    "next": "QUI5{#X,OI6X1Z9=nKaz",
+                    "parent": "7z!YB{KZh-8AoexOHI9V",
+                    "inputs": {
+                        "TEMPO": [
+                            1,
+                            [
+                                4,
+                                100
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "QUI5{#X,OI6X1Z9=nKaz": {
+                    "opcode": "data_setvariableto",
+                    "next": "eG1mDoF.Yf(fp)qvPeWK",
+                    "parent": "J7%TU]~Fm{i;|Fj03ypv",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "4"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "beats",
+                            "iAh/`=ARHj#;u{Doux5M-beats"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "eG1mDoF.Yf(fp)qvPeWK": {
+                    "opcode": "data_setvariableto",
+                    "next": "5=Q%PBZG}D:^:#/4e0.R",
+                    "parent": "QUI5{#X,OI6X1Z9=nKaz",
+                    "inputs": {
+                        "VALUE": [
+                            1,
+                            [
+                                10,
+                                "4"
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "beat-type",
+                            "iAh/`=ARHj#;u{Doux5M-beat-type"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "5=Q%PBZG}D:^:#/4e0.R": {
+                    "opcode": "data_setvariableto",
+                    "next": "7+]ATWI9?/tXQBfPOmO5",
+                    "parent": "eG1mDoF.Yf(fp)qvPeWK",
+                    "inputs": {
+                        "VALUE": [
+                            3,
+                            "vu5(B[tv8YT6bR)`]A7f",
+                            [
+                                10,
+                                ""
+                            ]
+                        ]
+                    },
+                    "fields": {
+                        "VARIABLE": [
+                            "beginning-silent-duration",
+                            "iAh/`=ARHj#;u{Doux5M-beginning-silent-duration"
+                        ]
+                    },
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "vu5(B[tv8YT6bR)`]A7f": {
+                    "opcode": "operator_multiply",
+                    "next": null,
+                    "parent": "5=Q%PBZG}D:^:#/4e0.R",
+                    "inputs": {
+                        "NUM1": [
+                            3,
+                            "|mE=4in~ZC@i78VV2x/w",
+                            [
+                                4,
+                                10
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            "AV|1n.G|C(xWHizZZSmp",
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "|mE=4in~ZC@i78VV2x/w": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "vu5(B[tv8YT6bR)`]A7f",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                60
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            "byRFhITgag=1=qR8laNJ",
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "byRFhITgag=1=qR8laNJ": {
+                    "opcode": "music_getTempo",
+                    "next": null,
+                    "parent": "|mE=4in~ZC@i78VV2x/w",
+                    "inputs": {},
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "AV|1n.G|C(xWHizZZSmp": {
+                    "opcode": "operator_multiply",
+                    "next": null,
+                    "parent": "vu5(B[tv8YT6bR)`]A7f",
+                    "inputs": {
+                        "NUM1": [
+                            3,
+                            "Yt0w@1Z,D-#[hhrm#v--",
+                            [
+                                4,
+                                10
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            [
+                                12,
+                                "beats",
+                                "iAh/`=ARHj#;u{Doux5M-beats"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "Yt0w@1Z,D-#[hhrm#v--": {
+                    "opcode": "operator_divide",
+                    "next": null,
+                    "parent": "AV|1n.G|C(xWHizZZSmp",
+                    "inputs": {
+                        "NUM1": [
+                            1,
+                            [
+                                4,
+                                4
+                            ]
+                        ],
+                        "NUM2": [
+                            3,
+                            [
+                                12,
+                                "beat-type",
+                                "iAh/`=ARHj#;u{Doux5M-beat-type"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "7+]ATWI9?/tXQBfPOmO5": {
+                    "opcode": "music_restForBeats",
+                    "next": "u7]O+Ao[nuxe|Z-]^eoD",
+                    "parent": "5=Q%PBZG}D:^:#/4e0.R",
+                    "inputs": {
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/2",
+                                "iAh/`=ARHj#;u{Doux5M-1/2"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "u7]O+Ao[nuxe|Z-]^eoD": {
+                    "opcode": "music_restForBeats",
+                    "next": "kbERSZC!N.;Ng`H3?Emc",
+                    "parent": "7+]ATWI9?/tXQBfPOmO5",
+                    "inputs": {
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "kbERSZC!N.;Ng`H3?Emc": {
+                    "opcode": "looks_say",
+                    "next": "KM9t~0H1dOja,e]cT~f%",
+                    "parent": "u7]O+Ao[nuxe|Z-]^eoD",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "は"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "KM9t~0H1dOja,e]cT~f%": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "WagZYW=O9lyH7kTk,?}Y",
+                    "parent": "kbERSZC!N.;Ng`H3?Emc",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                60
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "WagZYW=O9lyH7kTk,?}Y": {
+                    "opcode": "looks_say",
+                    "next": "XA3hNdI{:Qtol~:x^S.+",
+                    "parent": "KM9t~0H1dOja,e]cT~f%",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "にゅ"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "XA3hNdI{:Qtol~:x^S.+": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "gteujQP+9Vpq2r^}+0Tc",
+                    "parent": "WagZYW=O9lyH7kTk,?}Y",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                64
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4+1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/4+1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "gteujQP+9Vpq2r^}+0Tc": {
+                    "opcode": "looks_say",
+                    "next": "HXdqn2)aNI,]QUK0A|N+",
+                    "parent": "XA3hNdI{:Qtol~:x^S.+",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "う"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "HXdqn2)aNI,]QUK0A|N+": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": ".U`q0:^L+ITc:R^`Oa]Y",
+                    "parent": "gteujQP+9Vpq2r^}+0Tc",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                65
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                ".U`q0:^L+ITc:R^`Oa]Y": {
+                    "opcode": "looks_say",
+                    "next": "%C=jt.4}1l7||il(_hoX",
+                    "parent": "HXdqn2)aNI,]QUK0A|N+",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "の"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "%C=jt.4}1l7||il(_hoX": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "s+@7f-PxMG0N_lgv}@)u",
+                    "parent": ".U`q0:^L+ITc:R^`Oa]Y",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                65
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4+1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/4+1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "s+@7f-PxMG0N_lgv}@)u": {
+                    "opcode": "looks_say",
+                    "next": ":^wFQADXpOM6bghnu1OQ",
+                    "parent": "%C=jt.4}1l7||il(_hoX",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "や"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                ":^wFQADXpOM6bghnu1OQ": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "RKqLwKchfUI.4h=4*QS1",
+                    "parent": "s+@7f-PxMG0N_lgv}@)u",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                67
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "RKqLwKchfUI.4h=4*QS1": {
+                    "opcode": "looks_say",
+                    "next": "Yy6pssE9[G9s2W_snp5t",
+                    "parent": ":^wFQADXpOM6bghnu1OQ",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "ど"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "Yy6pssE9[G9s2W_snp5t": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "I?Fk)4SsplJzcZjmi=R{",
+                    "parent": "RKqLwKchfUI.4h=4*QS1",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                67
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/2",
+                                "iAh/`=ARHj#;u{Doux5M-1/2"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "I?Fk)4SsplJzcZjmi=R{": {
+                    "opcode": "looks_say",
+                    "next": "ye6DhSAE#k2jQ)LKDWN2",
+                    "parent": "Yy6pssE9[G9s2W_snp5t",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "も"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "ye6DhSAE#k2jQ)LKDWN2": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "bAVLN-i5@|o5(tcH+_K:",
+                    "parent": "I?Fk)4SsplJzcZjmi=R{",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                64
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "bAVLN-i5@|o5(tcH+_K:": {
+                    "opcode": "looks_say",
+                    "next": "tVH#g{J%bgCdymyB}Roc",
+                    "parent": "ye6DhSAE#k2jQ)LKDWN2",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "わ"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "tVH#g{J%bgCdymyB}Roc": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "}R-,z3w0QEa/voz430jy",
+                    "parent": "bAVLN-i5@|o5(tcH+_K:",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                67
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "}R-,z3w0QEa/voz430jy": {
+                    "opcode": "looks_say",
+                    "next": "1j2@Y}x*R5{roZv{rBCj",
+                    "parent": "tVH#g{J%bgCdymyB}Roc",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "が"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "1j2@Y}x*R5{roZv{rBCj": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "))Le~A?OJSx+p4H~0+yT",
+                    "parent": "}R-,z3w0QEa/voz430jy",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                65
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4+1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/4+1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "))Le~A?OJSx+p4H~0+yT": {
+                    "opcode": "looks_say",
+                    "next": "5a)hHd9P/=c^KWFTmFx{",
+                    "parent": "1j2@Y}x*R5{roZv{rBCj",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "あ"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "5a)hHd9P/=c^KWFTmFx{": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "(m]Lp(FWTPU|Vz`Y]wNl",
+                    "parent": "))Le~A?OJSx+p4H~0+yT",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                64
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/8",
+                                "iAh/`=ARHj#;u{Doux5M-1/8"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "(m]Lp(FWTPU|Vz`Y]wNl": {
+                    "opcode": "looks_say",
+                    "next": "fwd2!Uu+|n?`#o*.wCj?",
+                    "parent": "5a)hHd9P/=c^KWFTmFx{",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "や"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "fwd2!Uu+|n?`#o*.wCj?": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "s)1W6juyU`Z,`ZX/jE,{",
+                    "parent": "(m]Lp(FWTPU|Vz`Y]wNl",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                65
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "s)1W6juyU`Z,`ZX/jE,{": {
+                    "opcode": "looks_say",
+                    "next": "_IkN.0=(8jgi}kp#9Wmh",
+                    "parent": "fwd2!Uu+|n?`#o*.wCj?",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "あ"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "_IkN.0=(8jgi}kp#9Wmh": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "F9=v5-PuH/=x-C]`pDLD",
+                    "parent": "s)1W6juyU`Z,`ZX/jE,{",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                62
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "F9=v5-PuH/=x-C]`pDLD": {
+                    "opcode": "looks_say",
+                    "next": "#aWQ;HaX7KfzumK)rZ+`",
+                    "parent": "_IkN.0=(8jgi}kp#9Wmh",
+                    "inputs": {
+                        "MESSAGE": [
+                            1,
+                            [
+                                10,
+                                "ど"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "#aWQ;HaX7KfzumK)rZ+`": {
+                    "opcode": "music_playNoteForBeats",
+                    "next": "e0ee.b*/xW*:^s}~i)]?",
+                    "parent": "F9=v5-PuH/=x-C]`pDLD",
+                    "inputs": {
+                        "NOTE": [
+                            1,
+                            [
+                                4,
+                                64
+                            ]
+                        ],
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/2",
+                                "iAh/`=ARHj#;u{Doux5M-1/2"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                },
+                "e0ee.b*/xW*:^s}~i)]?": {
+                    "opcode": "music_restForBeats",
+                    "next": null,
+                    "parent": "#aWQ;HaX7KfzumK)rZ+`",
+                    "inputs": {
+                        "BEATS": [
+                            3,
+                            [
+                                12,
+                                "1/4",
+                                "iAh/`=ARHj#;u{Doux5M-1/4"
+                            ],
+                            [
+                                4,
+                                10
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "topLevel": false,
+                    "shadow": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "assetId": "4490f27a28b3c677348f330297a3bb89",
+                    "name": "コスチューム1",
+                    "bitmapResolution": 1,
+                    "md5ext": "4490f27a28b3c677348f330297a3bb89.svg",
+                    "dataFormat": "svg",
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 55
+                },
+                {
+                    "assetId": "d15c553bc1cd08d2d9d15eba9df5cd1b",
+                    "name": "コスチューム2",
+                    "bitmapResolution": 1,
+                    "md5ext": "d15c553bc1cd08d2d9d15eba9df5cd1b.svg",
+                    "dataFormat": "svg",
+                    "rotationCenterX": 47,
+                    "rotationCenterY": 55
+                }
+            ],
+            "sounds": [
+                {
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "name": "ニャー",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 44100,
+                    "sampleCount": 37376,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "extensions": [
+        "music"
+    ],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "0.2.0-prerelease.20180817143311",
+        "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
+    }
+}

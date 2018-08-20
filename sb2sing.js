@@ -1,7 +1,34 @@
+/**
+  sb2sing.js Convert scratch 2 project file to MusicXML
+
+  MIT License
+
+  Copyright (c) 2018 Hiroaki Kawashima (memakura)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+ */
+
 const divisions = 24;
 const mapNoteDuration = {
   "1\/8" : (divisions * 4) / 8,
   "1\/4" : (divisions * 4) / 4,
+  "1\/4+1\/8" : (divisions * 4) * 3 / 8,
   "1\/2" : (divisions * 4) / 2
 }
 const chromaticStep = ['C', 'C', 'D', 'D', 'E', 'F', 'F', 'G', 'G', 'A', 'A', 'B'];
@@ -10,7 +37,6 @@ const chromaticAlter = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 function handleFileSelect(evt) {
   var files = evt.target.files;
   var f = files[0];
-  var musicXml = '';
 
   JSZip.loadAsync(f)  // Load zip file and extract json file
   .then(function (loadfile) {
@@ -30,10 +56,17 @@ function handleFileSelect(evt) {
     }
   }).then(function (xml) {
     console.log(xml);
-    document.getElementById("result").style = 'display:block';  // show the result
+    document.getElementById("result").style.display = 'block';  // show the result
     target = document.getElementById("dl");
-    target.href = 'data:text/xml;charset=utf-8,'+encodeURIComponent(xml);
-    target.download = 'song.xml';
+    if(window.navigator && window.navigator.msSaveBlob){  // IE and Edge
+      target.addEventListener("click", function(e) {
+        e.preventDefault();
+        navigator.msSaveBlob( new Blob(['<?xml version="1.0" encoding="UTF-8"?>' + xml], {type:'text/xml'}), "song.xml" );
+      }, false);
+    } else {
+      target.href = 'data:text/xml;charset=utf-8,' + encodeURIComponent(xml);      
+      target.download = 'song.xml';
+    }
   }).catch(function (error) {
     alert(error);
   });
@@ -42,14 +75,18 @@ function handleFileSelect(evt) {
 // extract scratch script array
 function extractScratchScript(obj) {
   var scriptArray = [];
-  for (var child of obj.children) {
+  // for (var child of obj.children) {
+  for (var i in obj.children) {
+    child = obj.children[i];
     if (child.objName === undefined || child.objName !== "song") {
       continue;
     }
     console.log(child.objName);
 
     scriptArray = ['invalid song data'];  // invalid array data with length 1
-    for (var script of child.scripts) {
+    // for (var script of child.scripts) {
+    for (var j in child.scripts) {
+      script = child.scripts[j];
       if (script[2][0][0] !== "whenGreenFlag") {
         continue;
       }
@@ -99,7 +136,8 @@ function convertSongScript2XML(scriptArray) {
   
   // Insert date
   var date = new Date();
-  xml.getElementsByTagName('encoding-date')[0].textContent = date.toLocaleDateString().split('/').join('-');
+  //xml.getElementsByTagName('encoding-date')[0].textContent = date.toLocaleDateString().split('/').join('-');
+  xml.getElementsByTagName('encoding-date')[0].textContent = [date.getFullYear(), ('0' + (date.getMonth() + 1)).slice(-2), ('0' + date.getDate()).slice(-2)].join('-');
     
   // Default values
   var tempo = 110;
@@ -236,5 +274,5 @@ function convertSongScript2XML(scriptArray) {
 }
 
 
-
 document.getElementById('infile').addEventListener('change', handleFileSelect, false);
+
