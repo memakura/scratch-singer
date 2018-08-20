@@ -5,7 +5,8 @@ from pyquery import PyQuery as pq
 debug = True
 
 # 入力元
-xmlfname = 'song070_f00001_063.xml'
+# xmlfname = 'xml/song070_f00001_063.xml'
+xmlfname = 'song.xml'
 try:
     fin = open(xmlfname, 'r', encoding='utf-8')
 except IOError:
