@@ -23,8 +23,8 @@
 
 ## デモ
 
-- [test/song-homesweethome.wav]
-- [test/song-furusato.wav]
+- [test/song-homesweethome.wav](test/song-homesweethome.wav)
+- [test/song-furusato.wav](test/song-furusato.wav)
 - [test/timing-test-homesweethome.sb2](test/timing-test-homesweethome.sb2) では曲を作った時のスクラッチプロジェクトに、合成された歌声を合わせて同時に再生しています。スクラッチのスクリプトの方が遅れてくるため、同期させるのであればおそらくスクラッチスクリプト内でタイマーを使ったほうがよいでしょう。
 
 ## TODO
@@ -59,8 +59,8 @@
 
 ## Demo
 
-- [test/song-homesweethome.wav]
-- [test/song-furusato.wav]
+- [test/song-homesweethome.wav](test/song-homesweethome.wav)
+- [test/song-furusato.wav](test/song-furusato.wav)
 - [test/timing-test-homesweethome.sb2](test/timing-test-homesweethome.sb2) combines a generated wave file and the original scratch project and plays simultaneously. You can find that scratch script is slower than wave file. To synchronize precisely, it might be better to use timer in scratch script.
 
 ## TODO
