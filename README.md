@@ -1,6 +1,6 @@
 [(English)](#English)
 
-# スクラッチのプロジェクトファイルを歌声合成の入力ファイルに変換する
+# スクラッチ2のプロジェクトファイルを歌声合成の入力ファイルに変換する
 
 - スクラッチのプロジェクトファイル (sb2) を MusicXML へ変換します．
 - 変換されたXMLファイルは [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/) の入力に使えます．
@@ -22,10 +22,14 @@
 
 [test/test-timing.sb2](test/test-timing.sb2)では，曲を作った時のスクラッチプロジェクトに，合成された歌声を合わせて同時に再生しています．
 
+## ライセンス
+
+- MITライセンス
+- jszip.min.js は https://stuk.github.io/jszip/ を利用しています．
 
 <a name="English">
 
-# Convert Scratch Project File to MusicXML for Singing Voice Synthesis
+# Convert Scratch 2 Project File to a MusicXML for Singing Voice Synthesis
 
 - This script convert a scratch project file (sb2) to a MusicXML file (song.xml).
 - The generated xml file can be used as an input to [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/).
@@ -46,3 +50,8 @@
 ## Demo
 
 [test/test-timing.sb2](test/test-timing.sb2) combines a generated wave file and the original scratch project and plays simultaneously.
+
+## License
+
+- MIT License
+- jszip.min.js is from https://stuk.github.io/jszip/.
