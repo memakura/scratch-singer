@@ -1,0 +1,14 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+div#result {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    /* background: #f0f7ff; */
+    border: dashed 2px #5b8bd0;/*点線*/
+}
+p#result-succeed {
+    margin: 0.5em 0;
+}
