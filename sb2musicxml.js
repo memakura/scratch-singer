@@ -1,9 +1,9 @@
 /**
-  sb2sing.js Convert scratch 2 project file to MusicXML
+  sb2musicxml.js Convert scratch project to MusicXML for singing voice synthesis
 
   MIT License
 
-  Copyright (c) 2018 Hiroaki Kawashima (memakura)
+  Copyright (c) 2018 Hiroaki Kawashima
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -33,16 +33,20 @@ const mapNoteDuration = {
 }
 const chromaticStep = ['C', 'C', 'D', 'D', 'E', 'F', 'F', 'G', 'G', 'A', 'A', 'B'];
 const chromaticAlter = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
+const resultFilename = 'song.xml';
 
 function handleFileSelect(evt) {
   var files = evt.target.files;
   var f = files[0];
 
-  if (f == null) {
-    document.getElementById("filename").value = "選択されていません";
-    return;
-  } else {
-    document.getElementById("filename").value = f.name;
+  filenameElm = document.getElementById("filename");
+  if (filenameElm != null) {
+    if (f == null) {
+      filenameElm.value = 'File is not selected';
+      return;
+    } else {
+      filenameElm.value = f.name;
+    }
   }
 
   JSZip.loadAsync(f)  // Load zip file and extract json file
@@ -61,18 +65,27 @@ function handleFileSelect(evt) {
     } else {
       throw new Error('Cannot find valid sprite. Sprite needs to start with "when Green Flag clicked" followed by song data.');
     }
-  }).then(function (xml) {
-    console.log(xml);
-    document.getElementById("result").style.display = 'block';  // show the result
-    target = document.getElementById("dl");
+  }).then(function (retJson) {   // Output results
+    console.log(retJson.xml);  // for debug
+
+    resultElm = document.getElementById("result");
+    if (resultElm == null) {
+      throw new Error('Cannot find div#result');
+    }
+    resultElm.style.display = 'block';  // show the result
+
+    targetElm = document.getElementById("dl");
+    if (targetElm == null) {
+      throw new Error('Cannot find a#dl');
+    }
     if(window.navigator && window.navigator.msSaveBlob){  // IE and Edge
-      target.addEventListener("click", function(e) {
+      targetElm.addEventListener("click", function(e) {
         e.preventDefault();
-        navigator.msSaveBlob( new Blob(['<?xml version="1.0" encoding="UTF-8"?>' + xml], {type:'text/xml'}), "song.xml" );
+        navigator.msSaveBlob( new Blob(['<?xml version="1.0" encoding="UTF-8"?>' + retJson.xml], {type:'text/xml'}), resultFilename );
       }, false);
     } else {
-      target.href = 'data:text/xml;charset=utf-8,' + encodeURIComponent(xml);      
-      target.download = 'song.xml';
+      targetElm.href = 'data:text/xml;charset=utf-8,' + encodeURIComponent(retJson.xml);
+      targetElm.download = resultFilename;
     }
   }).catch(function (error) {
     alert(error);
@@ -146,7 +159,7 @@ function convertSongScript2XML(scriptArray) {
   //xml.getElementsByTagName('encoding-date')[0].textContent = date.toLocaleDateString().split('/').join('-');
   xml.getElementsByTagName('encoding-date')[0].textContent = [date.getFullYear(), ('0' + (date.getMonth() + 1)).slice(-2), ('0' + date.getDate()).slice(-2)].join('-');
     
-  // Default values
+  // Default values (may be overwritten later)
   var tempo = 110;
   var beats = 2;
   var beatType = 4;
@@ -161,12 +174,14 @@ function convertSongScript2XML(scriptArray) {
   var cumSumDuration;  // cumulative duration to check whether a new measure needs to be created or not
   var curMeasureElm = xml.querySelector('measure[number="1"]');  // current measure
 
+  // Overwrite duration-related variables (this needs to be called when 'beatType' or 'beats' is updated)
   function _updateDurationSettings() {
     durationPerMeasure = divisions * (4 / beatType) * beats;
     cumSumDuration = durationPerMeasure; //  Initial value is set the maximum to create a new measure immediately
-    xml.querySelector('measure[number="1"] > note > duration').textContent = durationPerMeasure;  // default duration of measure number=1
+    xml.querySelector('measure[number="1"] > note > duration').textContent = durationPerMeasure;  // duration of measure number=1
   }
 
+  // Check the duration of current measure, and create new measure if necessary
   function _createNewMeasureIfNecessary(duration) {
     cumSumDuration += duration;
     if (cumSumDuration > durationPerMeasure) {  // create new measure
@@ -177,7 +192,7 @@ function convertSongScript2XML(scriptArray) {
     }
   }
   
-  _updateDurationSettings();  // update duration settings once using default values
+  _updateDurationSettings();  // update duration settings using default values
   
   for (var i in scriptArray) {
     if (i==0) continue;  // skip
@@ -207,7 +222,7 @@ function convertSongScript2XML(scriptArray) {
             var duration = mapNoteDuration[scriptArray[i][2][1]];
             var midipitch = scriptArray[i][1];
             var step = chromaticStep[midipitch % 12];   // chromatic step name ('C', etc.)
-            var alter = chromaticAlter[midipitch % 12]; // 
+            var alter = chromaticAlter[midipitch % 12]; // -1, 0, 1
             var octave = Math.floor(midipitch / 12) - 1;
             var lyrictext = scriptArray[i-1][1];
             console.log('midipitch: ' + midipitch + ', duration: ' + duration + ', ' + lyrictext);
@@ -277,7 +292,7 @@ function convertSongScript2XML(scriptArray) {
     }
   }
   //encodeURIComponent(
-  return (new XMLSerializer()).serializeToString(xml);
+  return {'xml': (new XMLSerializer()).serializeToString(xml)};
 }
 
 

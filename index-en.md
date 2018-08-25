@@ -25,7 +25,7 @@
 - This script converts a scratch project file (.sb2) to a MusicXML file (song.xml).
 - The generated xml file can be used as an input to [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/).
 - Demo
-    1. [Original scratch project file (song-furusato.sb2)](sb2/song-furusato.sb2)  <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">(Open with a scratch online editor く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>)</a>(https://scratch.mit.edu/projects/239680094/)
+    1. [Original scratch project file (song-furusato.sb2)](sb2/song-furusato.sb2)  <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">(Open with a scratch online editor <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>)</a>(https://scratch.mit.edu/projects/239680094/)
     1. [Converted MusicXML (song.xml)](test/song.xml)
     1. [Synthesized singing voice by Sinsy (song-furusato.wav) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
 
@@ -56,10 +56,10 @@ Download the following files from [Download Zip] and save in the same folder.
 ## Synthesized examples by Sinsy
 
 - [test/song-homesweethome.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
-    - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">Source scratch project (online<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
+    - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">Source scratch project (online <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
     - [Source scratch project (sb2 file)](sb2/song-homesweethome.sb2)
 - [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
-    - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">Source scratch project (online<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
+    - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">Source scratch project (online <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
     - [](https://scratch.mit.edu/projects/239680094/)
     - [Source scratch project (sb2 file)](sb2/song-furusato.sb2)
 - [test/timing-test-homesweethome.sb2](test/timing-test-homesweethome.sb2) combines a generated wave file and the original scratch project and plays simultaneously. You can find that scratch script is slower than wave file. To synchronize precisely, it might be better to use timer in scratch script.

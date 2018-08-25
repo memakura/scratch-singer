@@ -49,6 +49,7 @@
     1. ダウンロードしたsong.xmlファイルを[Sinsy (Singing Voice Synthesis)
     ](http://www.sinsy.jp/)にアップロードします。「楽譜 (.xml)」にあるボタンを押すとアップロード画面が開きます。
     1. 歌声をWAVファイルなどで聞いたりダウンロードできます。
+        - ボーカルを選べます。「f000001j_dnn_beta」がよい感じです。
 
 ![flow_JP.png](images/flow_JP.png)
 
