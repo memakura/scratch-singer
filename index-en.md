@@ -28,15 +28,19 @@ Upload your scratch project (.sb2) <svg style="width:1em; height:1em"><use xlink
 
 ## How to use
 
-1. Create a scratch project like [this sample project](https://scratch.mit.edu/projects/240260846/). **Note that the name of the sprite needs to be "song".**
-    - Scratch offline editor can also be used after downloading sb2 file.
-1. Save/download the scratch project as a sb2 file.
-1. Click [the button at the top of this page](#uploadfile) and upload your scratch project (sb2) file.
-1. Download a generated XML file (song.xml).
-1. Upload the xml file to [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/).
-1. Download or play the generated wave file.
+1. Prepare a scratch project file (.sb2).
+    1. Create a scratch project of lyrics and a melody line. You can refer to or copy <a href="https://scratch.mit.edu/projects/240260846/" target="_blank">this sample project</a>.
+    1. Save/download the scratch project as a sb2 file.
+        - **Note that the name of the sprite needs to be "song".**
+        - Scratch offline editor can also be used after downloading sb2 file.
+1. Convert the scratch project file (.sb2) to MusicXML (.xml)
+    1. Click [the button at the top of this page](#uploadfile) and upload your scratch project (sb2) file.
+    1. Download a generated XML file (song.xml).
+1. Input the MusicXML file to Sinsy
+    1. Upload the xml file to [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/).
+    1. Download or play the generated wave file.
 
-![flow_JP.png](images/flow_JP.png)
+![flow_EN.png](images/flow_EN.png)
 
 ## Required files for local use
 
