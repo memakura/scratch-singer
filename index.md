@@ -2,15 +2,19 @@
 
 # スクラッチのプロジェクトファイルを歌声合成の入力ファイルに変換する
 
-スクラッチプロジェクト(.sb2)をアップロード <svg style="width:1em; height:1em"><use xlink:href="symbol-defs.svg#icon-upload"></use></svg>
+<a name="uploadfile"></a>
 
-<a name="uploadfile">
-<input type="file" id="infile" name="f">
+<label for="infile" class="button">
+    スクラッチプロジェクト(.sb2)をアップロード <svg class="icon"><use xlink:href="symbol-defs.svg#icon-upload"></use></svg>
+    <input type="file" id="infile" name="f">
+</label>
+<input type="text" id="filename" placeholder="" readonly>
+
 <div id="result" style="display:none;">
     <p id="result-succeed"><b>変換成功！</b></p>
     <ol>
-        <li><a href="#" id="dl">MusicXMLファイルのダウンロード (song.xml) <svg style="width:1em; height:1em"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a></li>
-        <li><a href="http://www.sinsy.jp/" target="_blank">Sinsyのページを開く</a></li>
+        <li><a href="#" id="dl" class="button">MusicXMLファイルをダウンロード (song.xml)  <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a></li>
+        <li><a href="http://www.sinsy.jp/" target="_blank">Sinsyのページを開く <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a></li>
     </ol>
 </div>
 <script type="text/javascript" src="jszip.min.js"></script>
@@ -20,18 +24,18 @@
 ## なにをするスクリプト？
 
 - スクラッチのプロジェクトファイル (.sb2) を MusicXML (song.xml) へ変換します。
-- 変換された MusicXML ファイルは [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/) などの歌声合成ツールの入力に使えます。
+- MusicXML ファイルは [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/) などの歌声合成ツールの入力に使えます。
 - デモ
-    1. [元のスクラッチプロジェクト (song-furusato.sb2)](sb2/song-furusato.sb2) <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">（スクラッチオンラインエディタで確認）</a>
+    1. [元のスクラッチプロジェクト (song-furusato.sb2)](sb2/song-furusato.sb2) <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">（オンラインエディタで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>）</a>
     1. [変換して出来た MusicXML (song.xml)](test/song.xml)
-    1. [Sinsyによる歌声合成結果のWAVファイル (song-furusato.wav) <svg style="width:1em; height:1em"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)（実際に聴けます）
+    1. [Sinsyによる歌声合成結果のWAVファイル (song-furusato.wav) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)（実際に聴けます）
     
 ## 使い方
 
 「大きな栗の木の下で」のボーカルを作ってみます。
 
 1. スクラッチのプロジェクトファイル (.sb2)を用意する
-    1. まずスクラッチで歌詞とメロディをプログラムします。 <a href="https://scratch.mit.edu/projects/240260846/" target="_blank">このリンクにあるスクラッチプロジェクト</a>をもとに作ってみてください。
+    1. まずスクラッチで歌詞とメロディをプログラムします。 <a href="https://scratch.mit.edu/projects/240260846/" target="_blank">このリンクにあるスクラッチプロジェクト<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a> をもとに作ってみてください。
     1. [ファイル] > [手元のコンピュータにダウンロード] からスクラッチのプロジェクトをsb2ファイルとしてダウンロードします。
         - **「song」という名前のスプライトにプログラムを書いていきます。**
         - 「・・と言う」と「・・の音符を・・拍鳴らす」のブロックをセットにして使います。「・・拍休む」が休符になります。
@@ -50,11 +54,11 @@
 
 ## Sinsyと組み合わせた合成例
 
-- [test/song-homesweethome.wav <svg style="width:1em; height:1em"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
-    - [元のスクラッチプロジェクト（オンライン）](https://scratch.mit.edu/projects/239680350/)
+- [test/song-homesweethome.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
+    - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">元のスクラッチプロジェクト（オンライン<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-homesweethome.sb2)
-- [test/song-furusato.wav <svg style="width:1em; height:1em"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
-    - [元のスクラッチプロジェクト（オンライン）](https://scratch.mit.edu/projects/239680094/)
+- [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
+    - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンライン<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-furusato.sb2)
 - [test/timing-test-homesweethome.sb2](test/timing-test-homesweethome.sb2) では曲を作った時のスクラッチプロジェクトに、合成された歌声を合わせて同時に再生しています。スクラッチのスクリプトの方が遅れてくるため、同期させるのであればおそらくスクラッチスクリプト内でタイマーを使ったほうがよいでしょう。
 

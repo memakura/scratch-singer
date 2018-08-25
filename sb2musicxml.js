@@ -38,6 +38,13 @@ function handleFileSelect(evt) {
   var files = evt.target.files;
   var f = files[0];
 
+  if (f == null) {
+    document.getElementById("filename").value = "選択されていません";
+    return;
+  } else {
+    document.getElementById("filename").value = f.name;
+  }
+
   JSZip.loadAsync(f)  // Load zip file and extract json file
   .then(function (loadfile) {
     console.log('Loaded ZIP file. Extract JSON...');

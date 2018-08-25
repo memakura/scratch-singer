@@ -12,3 +12,38 @@ div#result {
 p#result-succeed {
     margin: 0.5em 0;
 }
+
+svg[class^="icon"] {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+label > input {
+    display: none;
+}
+
+#filename {
+    display: inline-block;
+    border: none;
+    color: #ff7c5c;  /* #67c5ff; */
+    background-color: transparent;    
+}
+
+.button {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #ff7c5c;  /* #67c5ff; */
+    border: solid 2px #ff7c5c;  /* #67c5ff; */
+    border-radius: 3px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #ff7c5c;  /* #67c5ff; */
+    text-decoration: none;
+    color: white;
+    fill: white;  /* for svg */
+}
+
