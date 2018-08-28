@@ -25,12 +25,6 @@
  */
 
 const divisions = 24;
-const mapNoteDuration = {
-  '1\/8' : (divisions * 4) / 8,
-  '1\/4' : (divisions * 4) / 4,
-  '1\/4+1\/8' : (divisions * 4) * 3 / 8,
-  '1\/2' : (divisions * 4) / 2
-}
 const chromaticStep = ['C', 'C', 'D', 'D', 'E', 'F', 'F', 'G', 'G', 'A', 'A', 'B'];
 const chromaticAlter = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 const resultSuffix = 'song';
@@ -312,10 +306,10 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add sound note
     if (scriptArray[i][0] === 'noteOn:duration:elapsed:from:'){
-      if (scriptArray[i][2].length > 0 && scriptArray[i][2][0] === 'readVariable') {
+      if (scriptArray[i][2] > 0) {
         if (scriptArray[i-1][0] === 'say:') {
           try {
-            var duration = mapNoteDuration[scriptArray[i][2][1]];
+            var duration = scriptArray[i][2] * divisions;
             var midipitch = scriptArray[i][1];
             var step = chromaticStep[midipitch % 12];   // chromatic step name ('C', etc.)
             var alter = chromaticAlter[midipitch % 12]; // -1, 0, 1
@@ -364,9 +358,9 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add rest
     if (scriptArray[i][0] === 'rest:elapsed:from:') {
-      if (scriptArray[i][1].length > 0 && scriptArray[i][1][0] === 'readVariable') {
+      if (scriptArray[i][1] > 0) {
         try {
-          var duration = mapNoteDuration[scriptArray[i][1][1]];
+          var duration = scriptArray[i][1] * divisions;
           console.log(duration);
 
           // --- Append node ---
