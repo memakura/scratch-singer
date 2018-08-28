@@ -1,6 +1,6 @@
 [(Japanese)](index.md)
 
-# Convert Scratch 2 Project File to a MusicXML for Singing Voice Synthesis
+# Convert Scratch Project File to a MusicXML for Singing Voice Synthesis
 
 <a name="uploadfile"></a>
 
@@ -13,7 +13,7 @@
 <div id="result" style="display:none;">
     <p id="result-succeed"><b>Success!</b></p>
     <ol>
-        <li><a href="#" id="dl">Download MusicXML (song.xml) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a></li>
+        <li><a href="#" id="dl-xml" class="button">Download MusicXML (song.xml) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a></li>
         <li><a href="http://www.sinsy.jp/" target="_blank">Open Sinsy page <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a></li>
     </ol>
 </div>
@@ -33,7 +33,7 @@
 ## How to use
 
 1. Prepare a scratch project file (.sb2).
-    1. Create a scratch project of lyrics and a melody line. You can refer to or copy <a href="https://scratch.mit.edu/projects/240260846/" target="_blank">this sample project <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>.
+    1. Create a scratch project with lyrics and a melody line. You can refer to or copy <a href="https://scratch.mit.edu/projects/240260846/" target="_blank">a sample project here<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>.
     1. Save/download the scratch project as a sb2 file.
         - **Note that the name of the sprite needs to be "song".**
         - Scratch offline editor can also be used after downloading sb2 file.

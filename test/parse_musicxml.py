@@ -62,7 +62,7 @@ for ms in measure_list:
             print("cur_time: {:.4f} [sec]  duration: {} ({:.4f} [sec])"
                   "".format(cur_time, duration_div, duration_sec))
             print("lyric: " + lyric)
-        cur_time = cur_time + duration_sec
+        cur_time += duration_sec
 
         # TODO: backup
 
