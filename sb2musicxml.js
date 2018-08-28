@@ -283,6 +283,7 @@ function convertSongScript2XML(scriptArray) {
   var measureNumber = 1;
   var cumSumDuration;  // cumulative duration to check whether a new measure needs to be created or not
   var curMeasureElm = xml.querySelector('measure[number="1"]');  // current measure
+  var syllabicState = 'single';  // for English lyric
 
   // Overwrite duration-related variables (this needs to be called when 'beatType' or 'beats' is updated)
   function _updateDurationSettings() {
@@ -335,12 +336,26 @@ function convertSongScript2XML(scriptArray) {
       if (duration > 0) {
         if (scriptArray[i-1][0] === 'say:') {
           try {
-            var midipitch = scriptArray[i][1];
-            var step = chromaticStep[midipitch % 12];   // chromatic step name ('C', etc.)
-            var alter = chromaticAlter[midipitch % 12]; // -1, 0, 1
-            var octave = Math.floor(midipitch / 12) - 1;
-            var lyrictext = scriptArray[i-1][1];
-            console.log('midipitch: ' + midipitch + ', duration: ' + duration + ', ' + lyrictext);
+            var midiPitch = scriptArray[i][1];
+            var step = chromaticStep[midiPitch % 12];   // chromatic step name ('C', etc.)
+            var alter = chromaticAlter[midiPitch % 12]; // -1, 0, 1
+            var octave = Math.floor(midiPitch / 12) - 1;
+            var lyricText = scriptArray[i-1][1];
+            if (lyricText.split('').slice(-1)[0] == '-') {
+              lyricText = lyricText.replace(/-$/, '');  // remove the last char '-'
+              if (syllabicState == 'single' || syllabicState == 'end') {
+                syllabicState = 'begin';
+              } else if (syllabicState == 'begin' || syllabicState == 'middle') {
+                syllabicState = 'middle';
+              }
+            } else {
+              if (syllabicState == 'single' || syllabicState == 'end') {
+                syllabicState = 'single';
+              } else if (syllabicState == 'begin' || syllabicState == 'middle') {
+                syllabicState = 'end';
+              }
+            }
+            console.log('midiPitch: ' + midiPitch + ', duration: ' + duration + ', ' + lyricText, ',' + syllabicState);
             
             // --- Append node ---
             var pitchElm = xml.createElement('pitch'); // pitch {step, alter, octave}
@@ -359,10 +374,13 @@ function convertSongScript2XML(scriptArray) {
             var durationElm = xml.createElement('duration'); // duration
             durationElm.textContent = duration;
 
-            var lyricElm = xml.createElement('lyric'); // lyric {text}
+            var lyricElm = xml.createElement('lyric'); // lyric {text, syllabic}
             var textElm = xml.createElement('text');
-            textElm.textContent = lyrictext;
+            textElm.textContent = lyricText;
             lyricElm.appendChild(textElm);
+            var syllabicElm = xml.createElement('syllabic');
+            syllabicElm.textContent = syllabicState;
+            lyricElm.appendChild(syllabicElm);
 
             var noteElm = xml.createElement('note'); // note {pitch, duration, lyric}
             noteElm.appendChild(pitchElm);
