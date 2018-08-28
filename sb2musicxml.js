@@ -25,11 +25,24 @@
  */
 
 const divisions = 24;
+const mapNoteDuration = {
+  '4' : divisions * 4,
+  '3' : divisions * 3,
+  '2' : divisions * 2,
+  '1+1\/2' : divisions * 3 / 2,
+  '1' : divisions,
+  '1\/2+1\/4' : divisions * 3 / 4,
+  '2\/3' : divisions * 2 / 3,
+  '1\/2' : divisions / 2,
+  '1\/3' : divisions / 3,
+  '1\/4' : divisions / 4,
+  '1\/6' : divisions / 6
+}
 const chromaticStep = ['C', 'C', 'D', 'D', 'E', 'F', 'F', 'G', 'G', 'A', 'A', 'B'];
 const chromaticAlter = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 const resultSuffix = 'song';
 
-const restSymbolForLyric = '*';  // Symbol used for 'rest (pause)' in lyric
+const restSymbolForLyric = '_';  // Symbol used for 'rest (pause)' in lyric
 
 const mouth2soundMapJP = {
   a: ['あ', 'か', 'さ', 'た', 'な', 'は', 'や', 'ら', 'が', 'ざ', 'だ', 'ゃ'],
@@ -68,11 +81,18 @@ Lyric2Mouth = function (m2sMap) {
 Lyric2Mouth.prototype.convert = function (lyric) {
   var mouthChar = '';
   var tmpArray = [];
-  lyric.split('').forEach(function (mchar) {  // TODO: test
-    mouthChar = (mchar == 'ー' || mchar == 'っ'
-                 ? prevMouthChar.split('').slice(-1)[0]  // if prev is consonant + vowel, extract only the vowel
-                 : this.sound2mouth[mchar]);
-    if (mchar == 'ゃ' || mchar == 'ゅ' || mchar == 'ょ') {  // ok?
+  lyric.split('').forEach(function (mchar) {
+    if (mchar == 'ー' || mchar == 'っ') {
+      // if prev is consonant + vowel (such as 'ma'), extract only the vowel ('a')
+      mouthChar = prevMouthChar.split('').slice(-1)[0];
+    } else {
+      if (this.sound2mouth[mchar] === undefined) {
+        mouthChar = restSymbolForLyric;
+      } else {
+        mouthChar = this.sound2mouth[mchar];
+      }
+    }
+    if (mchar == 'ゃ' || mchar == 'ゅ' || mchar == 'ょ') {
       // console.log('overwrite ' + tmpArray.slice(-1)[0]);  // this is only a view
       tmpArray[tmpArray.length - 1] = mouthChar; // overwrite the previousMouthChar
     } else {
@@ -306,10 +326,15 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add sound note
     if (scriptArray[i][0] === 'noteOn:duration:elapsed:from:'){
-      if (scriptArray[i][2] > 0) {
+      var duration = 0;
+      if (Array.isArray(scriptArray[i][2]) && scriptArray[i][2].length > 0 && scriptArray[i][2][0] === 'readVariable') {  // variable
+        duration = mapNoteDuration[scriptArray[i][2][1]];
+      } else if (scriptArray[i][2] > 0) {  // varlue
+        duration = scriptArray[i][2] * divisions;
+      }
+      if (duration > 0) {
         if (scriptArray[i-1][0] === 'say:') {
           try {
-            var duration = scriptArray[i][2] * divisions;
             var midipitch = scriptArray[i][1];
             var step = chromaticStep[midipitch % 12];   // chromatic step name ('C', etc.)
             var alter = chromaticAlter[midipitch % 12]; // -1, 0, 1
@@ -358,10 +383,15 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add rest
     if (scriptArray[i][0] === 'rest:elapsed:from:') {
-      if (scriptArray[i][1] > 0) {
+      var duration = 0;
+      if (Array.isArray(scriptArray[i][1]) && scriptArray[i][1].length > 0 && scriptArray[i][1][0] === 'readVariable') {  // variable
+        duration = mapNoteDuration[scriptArray[i][1][1]];
+      } else if (scriptArray[i][1] > 0) {
+        duration = scriptArray[i][1] * divisions;  // value
+      }
+      if (duration > 0) {
         try {
-          var duration = scriptArray[i][1] * divisions;
-          console.log(duration);
+          console.log('rest, duration: ' + duration);
 
           // --- Append node ---
           var durationElm = xml.createElement('duration');  // duration
