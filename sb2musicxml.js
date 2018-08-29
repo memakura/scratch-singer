@@ -254,10 +254,6 @@ function convertSongScript2XML(scriptArray) {
                 + '        </time>'
                 + '      </attributes>'
                 + '      <sound/>'
-                + '      <note>'
-                + '        <rest/>'
-                + '        <duration></duration>'
-                + '      </note>'
                 + '    </measure>'
                 + '  </part>'
                 + '</score-partwise>'
@@ -281,28 +277,92 @@ function convertSongScript2XML(scriptArray) {
   
   // Start parsing
   var measureNumber = 1;
-  var cumSumDuration;  // cumulative duration to check whether a new measure needs to be created or not
+  var initialNoteFlag = true;
+  var cumSumDuration = 0 ;  // cumulative duration to check whether a new measure needs to be created or not
   var curMeasureElm = xml.querySelector('measure[number="1"]');  // current measure
   var syllabicState = 'single';  // for English lyric
+
+  // Create a sound note
+  function _createSoundNote(step, alter, octave, duration, lyricText, syllabicState) {
+    var pitchElm = xml.createElement('pitch'); // pitch {step, alter, octave}
+    var stepElm = xml.createElement('step');
+    stepElm.textContent = step;
+    pitchElm.appendChild(stepElm);
+    if (alter != 0) {
+      var alterElm = xml.createElement('alter');
+      alterElm.textContent = alter;
+      pitchElm.appendChild(alterElm);
+    }
+    var octaveElm = xml.createElement('octave');
+    octaveElm.textContent = octave;
+    pitchElm.appendChild(octaveElm);
+
+    var durationElm = xml.createElement('duration'); // duration
+    durationElm.textContent = duration;
+
+    var lyricElm = xml.createElement('lyric'); // lyric {text, syllabic}
+    var textElm = xml.createElement('text');
+    textElm.textContent = lyricText;
+    lyricElm.appendChild(textElm);
+    var syllabicElm = xml.createElement('syllabic');
+    syllabicElm.textContent = syllabicState;
+    lyricElm.appendChild(syllabicElm);
+
+    var noteElm = xml.createElement('note'); // note {pitch, duration, lyric}
+    noteElm.appendChild(pitchElm);
+    noteElm.appendChild(durationElm);
+    noteElm.appendChild(lyricElm);
+
+    return noteElm;
+  }
+
+  // Create a new 'rest' note
+  function _createRestNote(duration) {
+    var durationElm = xml.createElement('duration');  // duration
+    durationElm.textContent = duration;
+    var noteElm = xml.createElement('note');  // note {rest, duration}
+    noteElm.appendChild(xml.createElement('rest'));
+    noteElm.appendChild(durationElm);
+    return noteElm;
+  }
 
   // Overwrite duration-related variables (this needs to be called when 'beatType' or 'beats' is updated)
   function _updateDurationSettings() {
     durationPerMeasure = divisions * (4 / beatType) * beats;
-    cumSumDuration = durationPerMeasure; //  Initial value is set the maximum to create a new measure immediately
-    xml.querySelector('measure[number="1"] > note > duration').textContent = durationPerMeasure;  // duration of measure number=1
   }
 
   // Check the duration of current measure, and create new measure if necessary
-  function _createNewMeasureIfNecessary(duration) {
+  // Also, add one empty measure with 'rest' if the initial note is NOT 'rest'
+  function _createNewMeasureIfNecessary(duration, restFlag) {
+    if (initialNoteFlag) {
+      if (restFlag) {  // if initial note is 'rest'
+        cumSumDuration = 0;  // reset cumSumDuration
+      } else {  // if initial note is sound (not 'rest'), add one empty measure
+        curMeasureElm.appendChild(_createRestNote(durationPerMeasure));
+        cumSumDuration = durationPerMeasure; // enforce to create measure=2 immediately after this
+      }
+      initialNoteFlag = false;
+    }
     cumSumDuration += duration;
     if (cumSumDuration > durationPerMeasure) {  // create new measure
       curMeasureElm = xml.createElement('measure');
       curMeasureElm.setAttribute('number', ++measureNumber);  // increment number
       xml.querySelector('part').appendChild(curMeasureElm);
       cumSumDuration = duration;
-    }
+    }    
   }
-  
+
+  // Find duration: variable or value
+  function _extractDuration(arrayOrValue) {
+    var duration = 0;
+    if (Array.isArray(arrayOrValue) && arrayOrValue.length > 0 && arrayOrValue[0] === 'readVariable') {  // variable
+      duration = mapNoteDuration[arrayOrValue[1]];
+    } else if (arrayOrValue > 0) {  // value
+      duration = arrayOrValue * divisions;
+    }
+    return duration;      
+  }
+
   _updateDurationSettings();  // update duration settings using default values
   
   for (var i=0; i < scriptArray.length; i++) {  // for (var i in scriptArray) {
@@ -327,14 +387,9 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add sound note
     if (scriptArray[i][0] === 'noteOn:duration:elapsed:from:'){
-      var duration = 0;
-      if (Array.isArray(scriptArray[i][2]) && scriptArray[i][2].length > 0 && scriptArray[i][2][0] === 'readVariable') {  // variable
-        duration = mapNoteDuration[scriptArray[i][2][1]];
-      } else if (scriptArray[i][2] > 0) {  // varlue
-        duration = scriptArray[i][2] * divisions;
-      }
+      var duration = _extractDuration(scriptArray[i][2]);
       if (duration > 0) {
-        if (scriptArray[i-1][0] === 'say:') {
+        if (scriptArray[i-1][0] === 'say:') {  // if lyric exists
           try {
             var midiPitch = scriptArray[i][1];
             var step = chromaticStep[midiPitch % 12];   // chromatic step name ('C', etc.)
@@ -358,36 +413,8 @@ function convertSongScript2XML(scriptArray) {
             console.log('midiPitch: ' + midiPitch + ', duration: ' + duration + ', ' + lyricText, ',' + syllabicState);
             
             // --- Append node ---
-            var pitchElm = xml.createElement('pitch'); // pitch {step, alter, octave}
-            var stepElm = xml.createElement('step');
-            stepElm.textContent = step;
-            pitchElm.appendChild(stepElm);
-            if (alter != 0) {
-              var alterElm = xml.createElement('alter');
-              alterElm.textContent = alter;
-              pitchElm.appendChild(alterElm);
-            }
-            var octaveElm = xml.createElement('octave');
-            octaveElm.textContent = octave;
-            pitchElm.appendChild(octaveElm);
-
-            var durationElm = xml.createElement('duration'); // duration
-            durationElm.textContent = duration;
-
-            var lyricElm = xml.createElement('lyric'); // lyric {text, syllabic}
-            var textElm = xml.createElement('text');
-            textElm.textContent = lyricText;
-            lyricElm.appendChild(textElm);
-            var syllabicElm = xml.createElement('syllabic');
-            syllabicElm.textContent = syllabicState;
-            lyricElm.appendChild(syllabicElm);
-
-            var noteElm = xml.createElement('note'); // note {pitch, duration, lyric}
-            noteElm.appendChild(pitchElm);
-            noteElm.appendChild(durationElm);
-            noteElm.appendChild(lyricElm);
-
-            _createNewMeasureIfNecessary(duration);
+            var noteElm = _createSoundNote(step, alter, octave, duration, lyricText, syllabicState);
+            _createNewMeasureIfNecessary(duration, false);
             curMeasureElm.appendChild(noteElm);
           } catch (e) {
             alert(e);
@@ -401,25 +428,14 @@ function convertSongScript2XML(scriptArray) {
     }
     // Add rest
     if (scriptArray[i][0] === 'rest:elapsed:from:') {
-      var duration = 0;
-      if (Array.isArray(scriptArray[i][1]) && scriptArray[i][1].length > 0 && scriptArray[i][1][0] === 'readVariable') {  // variable
-        duration = mapNoteDuration[scriptArray[i][1][1]];
-      } else if (scriptArray[i][1] > 0) {
-        duration = scriptArray[i][1] * divisions;  // value
-      }
+      var duration = _extractDuration(scriptArray[i][1]);
       if (duration > 0) {
         try {
           console.log('rest, duration: ' + duration);
 
           // --- Append node ---
-          var durationElm = xml.createElement('duration');  // duration
-          durationElm.textContent = duration;
-
-          var noteElm = xml.createElement('note');  // note {rest, duration}
-          noteElm.appendChild(xml.createElement('rest'));
-          noteElm.appendChild(durationElm);
-
-          _createNewMeasureIfNecessary(duration);
+          var noteElm = _createRestNote(duration);
+          _createNewMeasureIfNecessary(duration, true);
           curMeasureElm.appendChild(noteElm);
         } catch (e) {
           alert(e);
@@ -429,7 +445,6 @@ function convertSongScript2XML(scriptArray) {
       }
     }
   }
-  //encodeURIComponent(
   return xml;
 }
 

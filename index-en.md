@@ -55,6 +55,9 @@ Download the following files from [Download Zip] and save in the same folder.
 
 ## Synthesized examples by Sinsy
 
+- [test/song-twinkletwinkle.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-twinkletwinkle.wav)
+    - <a href="https://scratch.mit.edu/projects//" target="_blank">Source scratch project (online <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
+    - [Source scratch project (sb2 file)](sb2/song-twinkletwinkle.sb2)
 - [test/song-homesweethome.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
     - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">Source scratch project (online <svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>)
     - [Source scratch project (sb2 file)](sb2/song-homesweethome.sb2)
