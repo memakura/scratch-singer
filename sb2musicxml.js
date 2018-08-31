@@ -31,12 +31,20 @@ const mapNoteDuration = {
   '2' : divisions * 2,
   '1+1\/2' : divisions * 3 / 2,
   '1' : divisions,
-  '1\/2+1\/4' : divisions * 3 / 4,
+  '23\/24' : divisions * 23 / 24,
+  '11\/12' : divisions * 11 / 12,
+  '7\/8' : divisions * 7 / 8,
+  '5\/6' : divisions * 5 / 6,
+  '3\/4' : divisions * 3 / 4,
   '2\/3' : divisions * 2 / 3,
   '1\/2' : divisions / 2,
+  '3\/8' : divisions * 3 / 8,
   '1\/3' : divisions / 3,
   '1\/4' : divisions / 4,
-  '1\/6' : divisions / 6
+  '1\/6' : divisions / 6,
+  '1\/8' : divisions / 8,
+  '1\/12' : divisions / 12,
+  '1\/24' : divisions / 24
 }
 const chromaticStep = ['C', 'C', 'D', 'D', 'E', 'F', 'F', 'G', 'G', 'A', 'A', 'B'];
 const chromaticAlter = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
@@ -45,16 +53,16 @@ const resultSuffix = 'song';
 const restSymbolForLyric = '_';  // Symbol used for 'rest (pause)' in lyric
 
 const mouth2soundMapJP = {
-  a: ['あ', 'か', 'さ', 'た', 'な', 'は', 'や', 'ら', 'が', 'ざ', 'だ', 'ゃ'],
+  a: ['あ', 'か', 'さ', 'た', 'な', 'は', 'や', 'ら', 'が', 'ざ', 'だ', 'ゃ', 'ぁ'],
   ma: ['ま', 'ば', 'ぱ'],
   ua: ['わ'],
-  i: ['い', 'き', 'し', 'ち', 'に', 'ひ', 'り', 'ぎ', 'じ', 'ぢ'],
+  i: ['い', 'き', 'し', 'ち', 'に', 'ひ', 'り', 'ぎ', 'じ', 'ぢ', 'ぃ'],
   mi: ['み', 'び', 'ぴ'],
-  u: ['う', 'く', 'す', 'つ', 'ぬ', 'ふ', 'ゆ', 'る', 'ぐ', 'ず', 'づ', 'ゅ'],
+  u: ['う', 'く', 'す', 'つ', 'ぬ', 'ふ', 'ゆ', 'る', 'ぐ', 'ず', 'づ', 'ゅ', 'ぅ'],
   mu: ['む', 'ぶ', 'ぷ'],
-  e: ['え', 'け', 'せ', 'て', 'ね', 'へ', 'れ', 'げ', 'ぜ', 'で'],
+  e: ['え', 'け', 'せ', 'て', 'ね', 'へ', 'れ', 'げ', 'ぜ', 'で', 'ぇ'],
   me: ['め', 'べ', 'ぺ'],
-  o: ['お', 'こ', 'そ', 'と', 'の', 'ほ', 'よ', 'ろ', 'ご', 'ぞ', 'ど', 'ょ'],
+  o: ['お', 'こ', 'そ', 'と', 'の', 'ほ', 'よ', 'ろ', 'ご', 'ぞ', 'ど', 'ょ', 'ぉ'],
   mo: ['も', 'ぼ', 'ぽ'],
   uo: ['を'],
   n: ['ん']
@@ -92,7 +100,8 @@ Lyric2Mouth.prototype.convert = function (lyric) {
         mouthChar = this.sound2mouth[mchar];
       }
     }
-    if (mchar == 'ゃ' || mchar == 'ゅ' || mchar == 'ょ') {
+    if (mchar == 'ゃ' || mchar == 'ゅ' || mchar == 'ょ'
+     || mchar == 'ぁ' || mchar =='ぃ' || mchar == 'ぅ' || mchar == 'ぇ' || mchar == 'ぉ') {
       // console.log('overwrite ' + tmpArray.slice(-1)[0]);  // this is only a view
       tmpArray[tmpArray.length - 1] = mouthChar; // overwrite the previousMouthChar
     } else {
@@ -281,8 +290,9 @@ function convertSongScript2XML(scriptArray) {
   var cumSumDuration = 0 ;  // cumulative duration to check whether a new measure needs to be created or not
   var curMeasureElm = xml.querySelector('measure[number="1"]');  // current measure
   var syllabicState = 'single';  // for English lyric
+  var reservedElmForNextMeasure = null; 
 
-  // Create a sound note
+  // Create a note with sound
   function _createSoundNote(step, alter, octave, duration, lyricText, syllabicState) {
     var pitchElm = xml.createElement('pitch'); // pitch {step, alter, octave}
     var stepElm = xml.createElement('step');
@@ -326,6 +336,13 @@ function convertSongScript2XML(scriptArray) {
     return noteElm;
   }
 
+  // Create sound 
+  function _createTempo(tempo) {
+    var soundElm = xml.createElement('sound');
+    soundElm.setAttribute('tempo', tempo);
+    return soundElm;
+  }
+
   // Overwrite duration-related variables (this needs to be called when 'beatType' or 'beats' is updated)
   function _updateDurationSettings() {
     durationPerMeasure = divisions * (4 / beatType) * beats;
@@ -347,7 +364,12 @@ function convertSongScript2XML(scriptArray) {
     if (cumSumDuration > durationPerMeasure) {  // create new measure
       curMeasureElm = xml.createElement('measure');
       curMeasureElm.setAttribute('number', ++measureNumber);  // increment number
-      xml.querySelector('part').appendChild(curMeasureElm);
+      if (reservedElmForNextMeasure !== null) {
+        curMeasureElm.appendChild(reservedElmForNextMeasure);
+        console.log('append reserved tempo')
+        reservedElmForNextMeasure = null;
+      }
+      xml.querySelector('part').appendChild(curMeasureElm);      
       cumSumDuration = duration;
     }    
   }
@@ -371,7 +393,17 @@ function convertSongScript2XML(scriptArray) {
     if (scriptArray[i][0] === 'setTempoTo:') {
       tempo = scriptArray[i][1];
       console.log('tempo: ' + tempo);
-      xml.querySelector('sound').setAttribute('tempo', tempo);  // overwrite default tempo
+      if (cumSumDuration == durationPerMeasure) {
+        reservedElmForNextMeasure = _createTempo(tempo);  // will add to the next measure
+      } else {
+        var soundElm = curMeasureElm.querySelector('sound');
+        if (soundElm) {
+          soundElm.setAttribute('tempo', tempo);  // add or overwrite
+        } else {
+          curMeasureElm.appendChild(_createTempo(tempo));  // add immediately
+        }
+        console.log('add tempo immediately')
+      }
     }
     if (scriptArray[i][0] === 'setVar:to:' && scriptArray[i][1] === 'beats') {
       beats = scriptArray[i][2];
