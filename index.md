@@ -33,6 +33,9 @@
     1. [元のスクラッチプロジェクト (song-furusato.sb2)](sb2/song-furusato.sb2) <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">（オンラインエディタで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>）</a>
     1. [変換して出来た MusicXML (song.xml)](test/song.xml)
     1. [Sinsyによる歌声合成結果のWAVファイル (song-furusato.wav) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)（実際に聴けます）
+    1. [合成された歌声に合わせてスクラッチでリップシンク (.sb2)](test/lipsync-singing.sb2) <a href="https://scratch.mit.edu/projects/244083954/" target="_blank">（オンラインエディタで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>）</a>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3BSUuTnjvVU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
 ## 使い方
 
@@ -76,14 +79,15 @@
 
 - <a href="https://scratch.mit.edu/projects/242273933/" target="_blank">ここからハッピバースデーの曲のスクリプト<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>を見ることができるので、名前に合わせて歌詞やメロディ（リズム）を変えてみましょう！
 
-### 発展編：再びスクラッチへ～リップシンク（口パク）や歌詞の表示
+## 発展編：リップシンクや歌詞の表示
 
-<a href="https://scratch.mit.edu/projects/242273933/" target="_blank">こんな感じ（サンプルプロジェクト）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>でリップシンクして歌っている感じを出します。
+このページのはじめの動画のように、リップシンクして歌っている感じを出してみます。
+<a href="https://scratch.mit.edu/projects/244083954/" target="_blank">サンプルプロジェクトはこんな感じ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>です。ちょっと下の説明は長いですが、タイマーとリストの組み合わせはいろいろ応用できるので、ぜひ試してみてください。
 
 1. Step 2 で、MusicXMLと一緒に生成された song-timing.txt, song-lyric.txt, song-mouth.txt をダウンロードしておきます。
 1. 新たにスクラッチでプロジェクトを作り、歌わせたいスプライトに「a」、「i」、「u」、「e」、「o」、「m」という名前のコスチュームを用意し、口の形を変えておきます。
     - 歌詞に「ん」が良く出てくるなら「n」も用意してください。「e」と同じでもよいです。
-    - サンプルプロジェクトのコスチュームも参考にしてください。
+    - <a href="https://scratch.mit.edu/projects/244083954/" target="_blank">サンプルプロジェクト<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>のコスチュームも参考にしてください。
 1. 音のタブで「ファイルから新しい音をアップロード」を選び、Step 3 でダウンロードした WAVファイルを読み込みます。
 1. スクリプトのタブを開き、「データ」>「リストを作る」を使って、リストを3つ用意します。
     - 名前はなんでもよいですが、この例では timing-list, lyric-list, mouth-list にしておきます。それぞれのリストへ song-timing.txt, song-lyric.txt, song-mouth.txt を読み込みます。
@@ -91,37 +95,29 @@
     - timing-list には、何秒後に次の言葉に移るかが書かれています。
 1. 「データ」>「変数を作る」でリストを順にみるための変数を作っておきます。この例では idx_time にします。はじめは1にしておきます。
 1. スクリプトに「音」>「...の音を鳴らす」のブロックを置き、その直後に「調べる」>「タイマーをリセット」を置きます。以上で準備は完了です。
-1. あとは、「調べる」>「タイマー」を使って、タイマー（経過時間）と timing_list の idx_time番目とをループで比べながら、もし時間が来たら idx_time を1つ増やして次に進めます。下の図の左側のような流れになります。
-1. 今歌っている歌詞は lyric_list、口の形は mouth_list のそれぞれ idx_time番目から取り出せます。
+1. あとは、「調べる」>「タイマー」のブロックを使って、タイマー（経過時間）と timing_list の idx_time番目とをループで比べながら、もし時間が来たら idx_time を1つ増やして次に進めます。下の図の左側のような流れになります。
+1. 今歌っている歌詞の言葉は lyric_list、口の形は mouth_list のそれぞれ idx_time番目から取り出せます。
     - mouth_list から取り出した文字に合わせてコスチューム変えることで口を動かします。
     - 口の動きは、一つの音に二つ以上の文字が入ることや、一つの文字が二つの口の形に対応したり（「ま」は m と a など）するので、mouth_list から取り出した文字の列を順に調べる必要があります。右側の move_mouth のように、「その他」>「ブロックを作る」で新たにブロックを作っておくと便利です。
-    - あとはサンプルをよく確認して、流れを追ってみてください。開始時のずれをなくすように一度音を読み込んでおいたり、歌詞のいらない記号を表示しないようにもしています。
+    - あとは<a href="https://scratch.mit.edu/projects/244083954/" target="_blank">サンプルプロジェクト<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>をよく確認して、流れを追ってみてください。開始時のずれをなくすように一度音を読み込んでおいたり、歌詞のいらない記号を表示しないようにもしています。
 
 ![lipsync-script](images/lipsync-script.png)
 
 ## Sinsyと組み合わせた合成例
 
 1. [test/song-homesweethome.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
-    - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">元のスクラッチプロジェクト（オンライン<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
+    - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-homesweethome.sb2)
 1. [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
-    - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンライン<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
+    - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-furusato.sb2)
-1. <a href="https://scratch.mit.edu/projects/239682309/" target="_blank">「埴生の宿」を歌ってみます（スクラッチオンライン）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
-    - 合成された歌声を合わせて同時に再生しています。一回目は再生が遅れることがありますが、その場合はいったん止めてもう一度再生してみてください。
-        - スプライト「song」は、歌声合成用のスクリプトが元になっています。
-    - 作成した曲が長いとスクラッチのスクリプトの方が遅れてくるため、同期させるのであればスクラッチスクリプト内でタイマーを使ったほうがよいでしょう。
-        - スプライト「Giga」の方はタイマーを使用した例です。詳しくは上の「発展編」を確認してください。
-    - 口の動き（リップシンク、口パク）も行っています。
-1. <a href="https://scratch.mit.edu/projects/243942031/" target="_blank">「ふるさと」を歌ってみます（スクラッチオンライン）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
-    - スプライト「song」の beginning-silent-duration は、自動挿入された全休符の一小節分の時間が入っているので、これで再生タイミングを合わせます。
-    - スプライト「song」は特に音符が多いところでずれてきますが、「Giga」はずれがなく、リップシンクもうまくいっています。
-    - 「Giga」単体で歌わせるには、「song」の「タイマーをリセット」の直後を切り離します。もしくは「・・・の音を鳴らす」と「タイマーをリセット」をGigaの方に移してもよいです。
-1. <a href="https://scratch.mit.edu/projects/242364573/" target="_blank">「ハッピバースデー」を4人で歌ってみます（スクラッチオンライン）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
+1. <a href="https://scratch.mit.edu/projects/242364573/" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - スプライト「Conductor」は表示されていませんが、他のスプライトに歌詞の表示や口を動かすタイミングをメッセージで伝えています。
     - 変数「motion_offset」でやや口の動きを早めのタイミングにしているので、早すぎる場合はこれを減らします（0.2や0.1など）。
     - <a href="https://scratch.mit.edu/projects/242273933/" target="_blank">歌声合成のためのスクリプトはこちら<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>です。
     - これをさらに [seq2sprite](https://memakura.github.io/seq2sprite/) と組み合わせると、<a href="https://scratch.mit.edu/projects/243360901/" target="_blank">こんな感じに応用できて<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>、ケーキのろうそくを消す部分も加えることができます。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VCJcj3ZZ6Jo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## TODO
 
@@ -139,5 +135,18 @@
 
 - MITライセンス
 - jszip.min.js は https://stuk.github.io/jszip/ を利用しています。
+
+## 付録：同期やリップシンクのテスト
+
+1. <a href="https://scratch.mit.edu/projects/239682309/" target="_blank">「埴生の宿」を歌ってみます（スクラッチオンライン）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
+    - 合成された歌声を合わせて同時に再生しています。一回目は再生が遅れることがありますが、その場合はいったん止めてもう一度再生してみてください。
+        - スプライト「song」は、歌声合成用のスクリプトが元になっています。
+    - 作成した曲が長い（音が多い）とスクラッチのスクリプトの方が遅れてくるため、同期させるのであればスクラッチスクリプト内でタイマーを使ったほうがよいでしょう。
+        - スプライト「Giga」の方はタイマーを使用した例です。詳しくは上の「発展編」を確認してください。
+    - 口の動き（リップシンク、口パク）も行っています。
+1. <a href="https://scratch.mit.edu/projects/243942031/" target="_blank">「ふるさと」を歌ってみます（スクラッチオンライン）<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
+    - スプライト「song」の beginning-silent-duration は、自動挿入された全休符の一小節分の時間が入っているので、これで再生タイミングを合わせます。
+    - スプライト「song」は特に音符が多いところでずれてきますが、「Giga」はずれがなく、リップシンクもうまくいっています。
+
 
 <script defer src="svgxuse.js"></script>
