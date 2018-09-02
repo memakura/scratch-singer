@@ -28,12 +28,12 @@
 ## なにをするスクリプト？
 
 - スクラッチのプロジェクトファイル (.sb2) を MusicXML (song.xml) へ変換します。
-- MusicXML ファイルは [Sinsy (Singing Voice Synthesis)](http://www.sinsy.jp/) などの歌声合成ツールの入力に使えます。
-- デモ
-    1. [元のスクラッチプロジェクト (song-furusato.sb2)](sb2/song-furusato.sb2) <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">（オンラインエディタで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>）</a>
+- MusicXML ファイルは <a href="http://www.sinsy.jp/" target="_blank">Sinsy (Singing Voice Synthesis)</a> などの歌声合成ツールの入力に使えます。
+- デモ（Flashが使えない場合は3.0betaで開いてください）
+    1. <a href="./sb2/song-furusato.sb2">元のプロジェクト (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">2.0オンライン版で開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#239680094" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
     1. [変換して出来た MusicXML (song.xml)](test/song.xml)
     1. [Sinsyによる歌声合成結果のWAVファイル (song-furusato.wav) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)（実際に聴けます）
-    1. [合成された歌声に合わせてスクラッチでリップシンク (.sb2)](test/lipsync-singing.sb2) <a href="https://scratch.mit.edu/projects/244083954/" target="_blank">（オンラインエディタで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>）</a>
+    1. <a href="./test/lipsync-singing.sb2">歌声に合わせてリップシンク (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/244083954/" target="_blank">2.0オンラインで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#244083954" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/3BSUuTnjvVU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
@@ -68,8 +68,7 @@
 
 ### Step 3. MusicXML (.xml) を Sinsy へ入力して歌声合成
 
-1. ダウンロードしたsong.xmlファイルを[Sinsy (Singing Voice Synthesis)
-](http://www.sinsy.jp/)にアップロードします。「楽譜 (.xml)」にあるボタンを押すとアップロード画面が開きます。
+1. ダウンロードしたsong.xmlファイルを <a href="http://www.sinsy.jp/" target="_blank">Sinsy (Singing Voice Synthesis)</a> にアップロードします。「楽譜 (.xml)」にあるボタンを押すとアップロード画面が開きます。
     - ボーカルを選べます。「f000001j_dnn_beta」がよい感じです。
 1. 歌声をWAVファイルなどで聞いたりダウンロードできます。
 
@@ -107,17 +106,18 @@
 
 1. [test/song-homesweethome.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-homesweethome.wav)
     - <a href="https://scratch.mit.edu/projects/239680350/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
-    - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-homesweethome.sb2)
+    - [元のスクラッチプロジェクト（.sb2）](sb2/song-homesweethome.sb2)
 1. [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
     - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
-    - [元のスクラッチプロジェクト（sb2ファイル）](sb2/song-furusato.sb2)
+    - [元のスクラッチプロジェクト（.sb2）](sb2/song-furusato.sb2)
 1. <a href="https://scratch.mit.edu/projects/242364573/" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - スプライト「Conductor」は表示されていませんが、他のスプライトに歌詞の表示や口を動かすタイミングをメッセージで伝えています。
     - 変数「motion_offset」でやや口の動きを早めのタイミングにしているので、早すぎる場合はこれを減らします（0.2や0.1など）。
     - <a href="https://scratch.mit.edu/projects/242273933/" target="_blank">歌声合成のためのスクリプトはこちら<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>です。
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VCJcj3ZZ6Jo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     - これをさらに [seq2sprite](https://memakura.github.io/seq2sprite/) と組み合わせると、<a href="https://scratch.mit.edu/projects/243360901/" target="_blank">こんな感じに応用できて<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>、ケーキのろうそくを消す部分も加えることができます。
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/95dDLoJVVFg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VCJcj3ZZ6Jo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## TODO
 
