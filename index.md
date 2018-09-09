@@ -1,6 +1,6 @@
 [(English)](index-en.md)
 
-# スクラッチのプロジェクトファイルを歌声合成の入力ファイルに変換する
+# スクラッチ・シンガー：音符を鳴らすスクラッチプロジェクトで歌声合成しよう
 
 <a name="uploadfile"></a>
 
@@ -28,7 +28,7 @@
 ## なにをするスクリプト？
 
 - スクラッチのプロジェクトファイル (.sb2) を MusicXML (song.xml) へ変換します。
-- MusicXML ファイルは <a href="http://www.sinsy.jp/" target="_blank">Sinsy (Singing Voice Synthesis)</a> などの歌声合成ツールの入力に使えます。
+- MusicXML ファイルは <a href="http://www.sinsy.jp/" target="_blank">Sinsy (Singing Voice Synthesis)</a> などの歌声合成（ボーカル・シンセサイザー）の入力に使えます。
 - デモ（Flashが使えない場合は3.0betaで開いてください）
     1. <a href="./sb2/song-furusato.sb2">元のプロジェクト (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">2.0オンライン版で開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#239680094" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
     1. [変換して出来た MusicXML (song.xml)](test/song.xml)
