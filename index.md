@@ -110,7 +110,7 @@
 1. [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
     - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（.sb2）](sb2/song-furusato.sb2)
-1. <a href="https://scratch.mit.edu/projects/242364573/" onclick="ga('send', 'event', 'external-link', '', 'scratch.mit.edu/projects/');" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
+1. <a href="https://scratch.mit.edu/projects/242364573/" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - スプライト「Conductor」は表示されていませんが、他のスプライトに歌詞の表示や口を動かすタイミングをメッセージで伝えています。
     - 変数「motion_offset」でやや口の動きを早めのタイミングにしているので、早すぎる場合はこれを減らします（0.2や0.1など）。
     - <a href="https://scratch.mit.edu/projects/242273933/" target="_blank">歌声合成のためのスクリプトはこちら<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>です。
