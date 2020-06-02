@@ -33,7 +33,7 @@
     1. <a href="./sb2/song-furusato.sb2">元のプロジェクト (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">2.0オンライン版で開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#239680094" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
     1. [変換して出来た MusicXML (song.xml)](test/song.xml)
     1. [Sinsyによる歌声合成結果のWAVファイル (song-furusato.wav) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)（実際に聴けます）
-    1. <a href="./test/lipsync-singing.sb2">歌声に合わせてリップシンク (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/244083954/" target="_blank">2.0オンラインで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#244083954" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
+    1. <a href="./test/lipsync-singing.sb2">歌声に合わせてリップシンク (.sb2) <svg class="icon"><use xlink:href="symbol-defs.svg#icon-download"></use></svg></a>&nbsp; <a href="https://scratch.mit.edu/projects/244083954/ onclick="ga('send', 'event', 'external-link', '', 'scratch.mit.edu/projects/');" target="_blank">2.0オンラインで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>&nbsp; <a href="https://beta.scratch.mit.edu/#244083954" target="_blank">3.0betaで開く<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/3BSUuTnjvVU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
@@ -110,7 +110,7 @@
 1. [test/song-furusato.wav <svg class="icon"><use xlink:href="symbol-defs.svg#icon-music"></use></svg>](test/song-furusato.wav)
     - <a href="https://scratch.mit.edu/projects/239680094/" target="_blank">元のスクラッチプロジェクト（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - [元のスクラッチプロジェクト（.sb2）](sb2/song-furusato.sb2)
-1. <a href="https://scratch.mit.edu/projects/242364573/" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
+1. <a href="https://scratch.mit.edu/projects/242364573/ onclick="ga('send', 'event', 'external-link', '', 'scratch.mit.edu/projects/');" target="_blank">「ハッピバースデー」を4人で歌ってみます（オンラインエディタ<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg></a>）
     - スプライト「Conductor」は表示されていませんが、他のスプライトに歌詞の表示や口を動かすタイミングをメッセージで伝えています。
     - 変数「motion_offset」でやや口の動きを早めのタイミングにしているので、早すぎる場合はこれを減らします（0.2や0.1など）。
     - <a href="https://scratch.mit.edu/projects/242273933/" target="_blank">歌声合成のためのスクリプトはこちら<svg class="icon"><use xlink:href="symbol-defs.svg#icon-new-tab"></use></svg>です。
